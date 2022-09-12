@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "731776820521",
+    "project_id": "world-pioneer",
+    "storage_bucket": "world-pioneer.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:731776820521:android:f26a4c0427f11276a50338",
+        "android_client_info": {
+          "package_name": "com.worldpioneer"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "731776820521-sj0dfc06nvvvu43mt80a87an8utqo0c8.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.worldpioneer",
+            "certificate_hash": "16b3298e847e40e22af7f9be0062f329656ce49b"
+          }
+        },
+        {
+          "client_id": "731776820521-fesmb2siohnadij42dkh38ldbgecnt3n.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAKuj1iMuoPM5V4w41v-8Sy6VmswsQJbcg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "731776820521-fesmb2siohnadij42dkh38ldbgecnt3n.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

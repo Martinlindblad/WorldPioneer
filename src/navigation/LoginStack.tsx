@@ -1,10 +1,12 @@
 import React from 'react';
-import {createNativeStackNavigator} from '@react-navigation/native-stack';
+
 import LoginScene from '../scenes/LoginScene';
 
 // import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
-const Stack = createNativeStackNavigator();
+import {createStackNavigator} from '@react-navigation/stack';
+
+const Stack = createStackNavigator();
 
 function LoginStack(): JSX.Element {
   //   const safeAreaInsets = useSafeAreaInsets();
@@ -12,7 +14,7 @@ function LoginStack(): JSX.Element {
   return (
     <Stack.Navigator>
       <Stack.Screen
-        name="Home"
+        name="Login"
         component={LoginScene}
         options={{headerShown: false}}
       />

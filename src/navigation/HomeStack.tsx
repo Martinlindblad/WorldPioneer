@@ -1,10 +1,10 @@
 import React from 'react';
-import {createNativeStackNavigator} from '@react-navigation/native-stack';
+import {createStackNavigator} from '@react-navigation/stack';
 import HomeScene from '../scenes/HomeScene';
 
 // import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
-const Stack = createNativeStackNavigator();
+const Stack = createStackNavigator();
 
 function HomeStack(): JSX.Element {
   //   const safeAreaInsets = useSafeAreaInsets();
