@@ -9,11 +9,6 @@ const styles = StyleSheet.create({
     width: '100%',
     padding: 20,
   },
-
-  item: {
-    width: '100%',
-    backgroundColor: 'orange',
-  },
   headerText: {
     fontSize: 28,
     color: 'black',
@@ -35,7 +30,7 @@ const styles = StyleSheet.create({
   },
 });
 
-const WelcomeHeader = () => {
+const WelcomeHeader = (): JSX.Element => {
   return (
     <View style={styles.welcomeContainer}>
       <View style={styles.imageContainer}></View>
