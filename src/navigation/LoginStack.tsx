@@ -14,7 +14,7 @@ function LoginStack(): JSX.Element {
   return (
     <Stack.Navigator>
       <Stack.Screen
-        name="Login"
+        name="LoginScene"
         component={LoginScene}
         options={{headerShown: false}}
       />

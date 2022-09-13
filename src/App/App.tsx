@@ -1,6 +1,6 @@
 import {NavigationContainer} from '@react-navigation/native';
 import React from 'react';
-// import Compose from '../utils/Compose';
+import Compose from '../utils/Compose';
 // import {Provider as FirebaseAuthProvider} from '../context/Auth';
 import Router from '../navigation/Router';
 
@@ -10,12 +10,11 @@ function App(): JSX.Element {
 
 const ComposedApp = () => {
   return (
-    // <Compose components={[FirebaseAuthProvider]}>
-    <NavigationContainer>
-      <App />
-    </NavigationContainer>
-
-    // </Compose>
+    <Compose components={[]}>
+      <NavigationContainer>
+        <App />
+      </NavigationContainer>
+    </Compose>
   );
 };
 
