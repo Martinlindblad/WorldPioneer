@@ -5,8 +5,8 @@ import {
   StyleSheet,
   ScrollView,
   StatusBar,
+  Text,
 } from 'react-native';
-// import {useFirebaseUserAuth} from '../context/Auth';
 
 const LoginScene = (): JSX.Element => {
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
@@ -15,7 +15,7 @@ const LoginScene = (): JSX.Element => {
   return (
     <>
       <StatusBar barStyle="dark-content" />
-      <SafeAreaView style={styles.body}>
+      <SafeAreaView style={styles.content}>
         <ScrollView
           contentInsetAdjustmentBehavior="automatic"
           style={styles.scrollView}>
@@ -29,12 +29,9 @@ const LoginScene = (): JSX.Element => {
                 disabled={initializing}
               /> */}
             </View>
-            {/* <View style={styles.buttonContainer}>
-              {!currentUser && <Text>You are currently logged out</Text>}
-              {currentUser && (
-                <Button onPress={signOut} title="LogOut" color="red" />
-              )}
-            </View> */}
+            <View style={styles.buttonContainer}>
+              <Text style={{color: 'black'}}>You are currently logged out</Text>
+            </View>
           </View>
         </ScrollView>
       </SafeAreaView>
