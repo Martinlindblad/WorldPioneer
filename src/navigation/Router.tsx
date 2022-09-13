@@ -3,15 +3,16 @@ import {createStackNavigator} from '@react-navigation/stack';
 import OnboardingStack from './OnboardingStack';
 import ContentStack from './ContentStack';
 import LoginStack from './LoginStack';
-import {useAuth} from '../hooks/Auth';
+import {useFirebaseUserAuth} from '../contexts/Auth';
 
 const Stack = createStackNavigator();
 
 function Router(): JSX.Element {
-  const {isLoggedIn} = useAuth();
+  const {currentUser} = useFirebaseUserAuth();
+
   return (
     <Stack.Navigator>
-      {isLoggedIn ? (
+      {currentUser ? (
         <>
           <Stack.Screen
             name="Content"

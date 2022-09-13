@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useCallback, useEffect} from 'react';
 import {
   SafeAreaView,
   View,
@@ -6,11 +6,22 @@ import {
   ScrollView,
   StatusBar,
   Text,
+  Button,
+  ActivityIndicator,
 } from 'react-native';
+import {useFirebaseUserAuth} from '../contexts/Auth';
 
 const LoginScene = (): JSX.Element => {
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  // const {signIn, signOut, currentUser, initializing} = useFirebaseUserAuth();
+  const {signInWithEmailAndPassword, initializing} = useFirebaseUserAuth();
+
+  const handleSignInButtonPressed = useCallback(() => {
+    const email = 'martin.l@test.com';
+    const password = 'Test';
+    signInWithEmailAndPassword({
+      email,
+      password,
+    });
+  }, []);
 
   return (
     <>
@@ -18,16 +29,21 @@ const LoginScene = (): JSX.Element => {
       <SafeAreaView style={styles.content}>
         <ScrollView
           contentInsetAdjustmentBehavior="automatic"
-          style={styles.scrollView}>
+          style={styles.scrollView}
+          contentContainerStyle={{padding: 40}}>
           <View style={styles.body}>
+            <Text style={{color: 'black', paddingVertical: 40, fontSize: 28}}>
+              Login
+            </Text>
             <View style={styles.sectionContainer}>
-              {/* <GoogleSigninButton
-                style={{width: 192, height: 48}}
-                size={GoogleSigninButton.Size.Wide}
-                color={GoogleSigninButton.Color.Dark}
-                onPress={signIn}
-                disabled={initializing}
-              /> */}
+              <Button
+                onPress={handleSignInButtonPressed}
+                title="SignIn"></Button>
+              {initializing && (
+                <View>
+                  <ActivityIndicator size="large" color="#00ff00" />
+                </View>
+              )}
             </View>
             <View style={styles.buttonContainer}>
               <Text style={{color: 'black'}}>You are currently logged out</Text>
@@ -45,9 +61,6 @@ const styles = StyleSheet.create({
   content: {
     flex: 1,
     backgroundColor: '#F9FEFF',
-    alignItems: 'center',
-    justifyContent: 'center',
-    width: '100%',
   },
   buttonContainer: {
     justifyContent: 'center',
@@ -57,6 +70,6 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
   },
-  body: {flex: 1},
+  body: {flex: 1, justifyContent: 'center', alignItems: 'center'},
   scrollView: {flex: 1},
 });
