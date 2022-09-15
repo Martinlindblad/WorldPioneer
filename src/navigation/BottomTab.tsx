@@ -4,6 +4,7 @@ import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import {useSafeAreaInsets} from 'react-native-safe-area-context';
 
 import HomeStack from './HomeStack';
+import SettingsStack from './SettingsStack';
 
 const Tab = createBottomTabNavigator();
 
@@ -37,6 +38,14 @@ function BottomTab(): JSX.Element {
         options={{
           headerShown: false,
           title: 'Home',
+        }}
+      />
+      <Tab.Screen
+        name="SettingsTab"
+        component={SettingsStack}
+        options={{
+          headerShown: false,
+          title: 'Settings',
         }}
       />
       {/* <Tab.Screen name="Content" component={CalendarStack} />

@@ -15,12 +15,17 @@ export const Context = React.createContext<{
     email: string;
     password: string;
   }) => void;
+  createUserWithEmailAndPassword: (params: {
+    email: string;
+    password: string;
+  }) => void;
   currentUser: FirebaseAuthTypes.User | null;
   signOut: () => void;
 }>({
   signOut: () => Promise.reject(),
   initializing: true,
   signInWithEmailAndPassword: () => Promise.resolve(),
+  createUserWithEmailAndPassword: () => Promise.resolve(),
   currentUser: firebase.auth().currentUser,
 });
 
@@ -44,6 +49,28 @@ export function Provider({
   }
 
   const signInWithEmailAndPassword = useCallback(
+    ({email, password}: {email: string; password: string}) => {
+      firebase
+        .auth()
+        .signInWithEmailAndPassword(email, password)
+        .then(() => {
+          console.log('User account created & signed in!');
+        })
+        .catch(error => {
+          if (error.code === 'auth/email-already-in-use') {
+            console.log('That email address is already in use!');
+          }
+
+          if (error.code === 'auth/invalid-email') {
+            console.log('That email address is invalid!');
+          }
+
+          console.error(error);
+        });
+    },
+    [],
+  );
+  const createUserWithEmailAndPassword = useCallback(
     ({email, password}: {email: string; password: string}) => {
       firebase
         .auth()
@@ -83,6 +110,7 @@ export function Provider({
       currentUser,
       initializing,
       signInWithEmailAndPassword,
+      createUserWithEmailAndPassword,
       signOut,
     }),
     [currentUser],
