@@ -19,38 +19,10 @@ const LoginScene = (): JSX.Element => {
   const handleSignInButtonPressed = useCallback(() => {
     const email = 'martin.l@test.com';
     const password = 'DevTest';
-    firebase
-      .auth()
-      .signInWithEmailAndPassword(email, password)
-      .then(() => {
-        console.log('User account created & signed in!');
-      })
-      .catch(error => {
-        if (error.code === 'auth/email-already-in-use') {
-          console.log('That email address is already in use!');
-        }
+    const params = {email, password};
 
-        if (error.code === 'auth/invalid-email') {
-          console.log('That email address is invalid!');
-        }
-
-        console.error(error);
-      });
-    // signInWithEmailAndPassword({
-    //   email,
-    //   password,
-    // });
+    signInWithEmailAndPassword(params);
   }, []);
-  const x = () => {
-    const authCredential = firebase.auth.EmailAuthProvider.credential(
-      'martin.l@test.com',
-      'DevTest',
-    );
-    const userx = firebase.auth().currentUser?.getIdTokenResult();
-    console.log(authCredential.token);
-    console.log(userx);
-  };
-  console.log(currentUser);
 
   return (
     <>

@@ -40,7 +40,7 @@ export function Provider({
 }): JSX.Element {
   const [currentUser, setCurrentUser] = useState(firebase.auth().currentUser);
   const [initializing, setInitializing] = useState(true);
-  // Handle user state changes
+
   function onAuthStateChanged(
     user: React.SetStateAction<FirebaseAuthTypes.User | null>,
   ) {
