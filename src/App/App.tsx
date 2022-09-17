@@ -1,21 +1,20 @@
+import {NavigationContainer} from '@react-navigation/native';
 import React from 'react';
-// import Compose from '../utils/Compose';
-// import {Provider as FirebaseAuthProvider} from '../context/Auth';
-import RootStack from '../navigation/RootStack';
+import Compose from '../utils/Compose';
+import {Provider as FirebaseAuthProvider} from '../contexts/Auth';
+import Router from '../navigation/Router';
 
 function App(): JSX.Element {
-  return (
-    <>
-      <RootStack />
-    </>
-  );
+  return <Router />;
 }
 
 const ComposedApp = () => {
   return (
-    // <Compose components={[FirebaseAuthProvider]}>
-    <App />
-    // </Compose>
+    <Compose components={[FirebaseAuthProvider]}>
+      <NavigationContainer>
+        <App />
+      </NavigationContainer>
+    </Compose>
   );
 };
 

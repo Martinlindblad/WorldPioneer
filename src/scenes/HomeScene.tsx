@@ -1,39 +1,20 @@
 import React, {useCallback, useMemo} from 'react';
-import {SafeAreaView, View, Text, StyleSheet, FlatList} from 'react-native';
+import {SafeAreaView, View, StyleSheet, FlatList} from 'react-native';
+import WelcomeHeader from '../components/WelcomeHeader';
 
 const HomeScene = (): JSX.Element => {
   const sections = useMemo(() => {
     return [{welcome: {title: 'welcome'}}];
   }, []);
   // const welcomePressed = useCallback(() => {}, []);
-  // const renderSection = useCallback(
-  //   ({section}) => {
-  //     switch (section) {
-  //       case 'welcome':
-  //         return (
-  //           <View style={styles.welcomeContainer}>
-  //             <Pressable onPress={welcomePressed}>
-  //               <View style={styles.content}>
-  //                 <Text>{section.title}</Text>
-  //               </View>
-  //             </Pressable>
-  //           </View>
-  //         );
-  //     }
-  //   },
-  //   [welcomePressed],
-  // );
 
   const renderSection = useCallback(() => {
-    return (
-      <View style={styles.content}>
-        <Text>Test APPP</Text>
-      </View>
-    );
+    return <View style={styles.item}></View>;
   }, []);
 
   return (
     <SafeAreaView style={{flex: 1}}>
+      <WelcomeHeader />
       <FlatList data={sections} renderItem={renderSection} />
     </SafeAreaView>
   );
@@ -55,5 +36,9 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     width: '100%',
+  },
+  item: {
+    width: '100%',
+    backgroundColor: 'orange',
   },
 });

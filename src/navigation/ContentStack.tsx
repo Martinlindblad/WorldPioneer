@@ -1,11 +1,12 @@
 import React from 'react';
-import {createNativeStackNavigator} from '@react-navigation/native-stack';
 
 // import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import BottomTab from './BottomTab';
 import LocationListScene from '../scenes/LocationListScene';
 
-const Stack = createNativeStackNavigator();
+import {createStackNavigator} from '@react-navigation/stack';
+
+const Stack = createStackNavigator();
 
 function ContentStack(): JSX.Element {
   //   const safeAreaInsets = useSafeAreaInsets();

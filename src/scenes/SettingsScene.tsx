@@ -13,15 +13,13 @@ import {
 import {useFirebaseUserAuth} from '../contexts/Auth';
 
 const LoginScene = (): JSX.Element => {
-  const {signInWithEmailAndPassword, initializing, currentUser} =
-    useFirebaseUserAuth();
+  const {signOut, initializing, currentUser} = useFirebaseUserAuth();
 
-  const handleSignInButtonPressed = useCallback(() => {
-    const email = 'martin.l@test.com';
-    const password = 'DevTest';
-    const params = {email, password};
-
-    signInWithEmailAndPassword(params);
+  const handleSignOutPressed = useCallback(() => {
+    firebase
+      .auth()
+      .signOut()
+      .then(() => console.log('User signed out!'));
   }, []);
 
   return (
@@ -37,9 +35,7 @@ const LoginScene = (): JSX.Element => {
               {currentUser ? currentUser.email : 'Login'}
             </Text>
             <View style={styles.sectionContainer}>
-              <Button
-                onPress={handleSignInButtonPressed}
-                title="SignIn"></Button>
+              <Button onPress={handleSignOutPressed} title="Sign Out"></Button>
               {initializing && (
                 <View>
                   <ActivityIndicator size="large" color="#00ff00" />

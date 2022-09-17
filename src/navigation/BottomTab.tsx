@@ -4,6 +4,7 @@ import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import {useSafeAreaInsets} from 'react-native-safe-area-context';
 
 import HomeStack from './HomeStack';
+import SettingsStack from './SettingsStack';
 
 const Tab = createBottomTabNavigator();
 
@@ -18,7 +19,7 @@ function BottomTab(): JSX.Element {
         tabBarActiveTintColor: 'blue',
         tabBarInactiveTintColor: 'pink',
         tabBarLabelStyle: {
-          fontSize: 12,
+          fontSize: 16,
           fontWeight: '400',
           fontFamily: 'Outfit-Regular',
           paddingBottom: 12,
@@ -39,23 +40,25 @@ function BottomTab(): JSX.Element {
           title: 'Home',
         }}
       />
-      {/* <Tab.Screen
-        name="Content"
-        component={CalendarStack}
+      <Tab.Screen
+        name="SettingsTab"
+        component={SettingsStack}
+        options={{
+          headerShown: false,
+          title: 'Settings',
+        }}
       />
+      {/* <Tab.Screen name="Content" component={CalendarStack} />
       <Tab.Screen
         name="Forum"
         component={ForumStack}
-        options={{ headerShown: false }}
+        options={{headerShown: false}}
       />
-      <Tab.Screen
-        name="Courses"
-        component={CoursesStack}
-      />
-      <Tab.Screen
+      <Tab.Screen name="Courses" component={CoursesStack} /> */}
+      {/* <Tab.Screen
         name="More"
         component={MoreStack}
-        options={{ headerShown: false, title: 'Mer' }}
+        options={{headerShown: false, title: 'Mer'}}
       /> */}
     </Tab.Navigator>
   );

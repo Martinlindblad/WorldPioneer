@@ -7,23 +7,23 @@ import SettingsScene from '../scenes/SettingsScene';
 
 const Stack = createStackNavigator();
 
-function HomeStack(): JSX.Element {
+function SettingsStack(): JSX.Element {
   //   const safeAreaInsets = useSafeAreaInsets();
 
   return (
     <Stack.Navigator>
       <Stack.Screen
-        name="Home"
-        component={HomeScene}
+        name="Settings"
+        component={SettingsScene}
         options={{headerShown: false}}
       />
       <Stack.Screen
-        name="Settings"
-        component={SettingsScene}
+        name="Home"
+        component={HomeScene}
         options={{headerShown: false}}
       />
     </Stack.Navigator>
   );
 }
 
-export default HomeStack;
+export default SettingsStack;
