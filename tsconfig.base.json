@@ -2,6 +2,7 @@
   "compilerOptions": {
     "target": "es5",
     "lib": ["dom", "dom.iterable", "esnext"],
+    "types": ["react", "jest"],
     "allowJs": true,
     "skipLibCheck": true,
     "strict": true,
@@ -15,6 +16,6 @@
     "jsx": "preserve",
     "downlevelIteration": true,
     "strictNullChecks": true,
-    "baseUrl": "src/"
+    "baseUrl": "src/",
   }
 }
