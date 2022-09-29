@@ -1,23 +1,18 @@
 import {ThemeProvider} from '@react-navigation/native';
-import React, {
-  useCallback,
-  useMemo,
-  useContext,
-  useEffect,
-  useState,
-} from 'react';
+import React, {useMemo, useEffect, useState} from 'react';
 
 import {useColorScheme} from 'react-native';
-import {Context} from 'src/contexts/Auth';
-import themes from 'src/Theme';
+import themes from 'src/theme/*';
 
 type ThemeSelectorContext = {
-  themes: Array<{
+  appThemes: Array<{
     displayName: string;
     name: string;
   }>;
-  updateTheme: (themeName: string) => void;
 };
+export const Context = React.createContext<ThemeSelectorContext>({
+  appThemes: [],
+});
 
 const appThemes = [
   {displayName: 'Light', name: 'ligtht'},
@@ -26,7 +21,7 @@ const appThemes = [
 
 const systemColorScheme = useColorScheme();
 
-const themeSelector = ({
+const ThemeSelector = ({
   children,
 }: {
   children?: React.ReactNode;
@@ -50,9 +45,17 @@ const themeSelector = ({
     }
   }, []);
 
+  const contextValues = useMemo(
+    () => ({
+      appThemes,
+    }),
+    [],
+  );
+
   return (
     <Context.Provider value={contextValues}>
       <ThemeProvider value={theme}>{children}</ThemeProvider>
     </Context.Provider>
   );
 };
+export default ThemeSelector;
