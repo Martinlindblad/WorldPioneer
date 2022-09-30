@@ -2,7 +2,7 @@ import {ThemeProvider} from '@react-navigation/native';
 import React, {useMemo, useEffect, useState} from 'react';
 
 import {useColorScheme} from 'react-native';
-import themes from 'src/theme/*';
+import themes from 'src/theme';
 
 type ThemeSelectorContext = {
   appThemes: Array<{
