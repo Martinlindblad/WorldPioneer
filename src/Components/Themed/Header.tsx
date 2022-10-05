@@ -1,48 +1,48 @@
-import {Text as DefaultText, TextProps, StyleSheet} from 'react-native';
+import {Text as DefaultHeader, TextProps, StyleSheet} from 'react-native';
 import colors from 'src/theme/colors';
 import currentColorScheme from 'src/theme/colors';
 
 const styles = StyleSheet.create({
-  defaultText: {
+  defaultHeader: {
     color: colors.text,
   },
 
-  'defaultText.l': {
-    fontSize: 18,
+  'defaultHeader.l': {
+    fontSize: 38,
     lineHeight: 22,
     letterSpacing: 0.5,
   },
-  'defaultText.m': {
-    fontSize: 16,
+  'defaultHeader.m': {
+    fontSize: 23,
     lineHeight: 20,
   },
-  'defaultText.s': {
-    fontSize: 14,
+  'defaultHeader.s': {
+    fontSize: 20,
   },
 });
 
-export const Text = ({
+export const Header = ({
   variant = 's',
   props,
   children,
 }: {
   variant: 'l' | 'm' | 's';
   props: TextProps;
-  children?: React.ReactNode;
+  children: React.ReactNode;
 }) => {
   const {style, ...otherProps} = props;
 
   return (
-    <DefaultText
+    <DefaultHeader
       style={[
         {color: currentColorScheme.text},
         style,
-        styles.defaultText,
-        styles[`defaultText.${variant}`],
+        styles.defaultHeader,
+        styles[`defaultHeader.${variant}`],
         ,
       ]}
       {...otherProps}>
       {children}
-    </DefaultText>
+    </DefaultHeader>
   );
 };
