@@ -2,8 +2,8 @@ import {NavigationContainer} from '@react-navigation/native';
 import React from 'react';
 import Compose from '../utils/Compose';
 import {Provider as FirebaseAuthProvider} from '../contexts/Auth';
-import ThemeSelector from 'src/utils/ThemeSelector';
 import Router from '../navigation/Router';
+import ThemeSelector from 'src/utils/ThemeSelector';
 
 function App(): JSX.Element {
   return <Router />;
@@ -12,11 +12,11 @@ function App(): JSX.Element {
 const ComposedApp = () => {
   return (
     <Compose components={[FirebaseAuthProvider]}>
-      <ThemeSelector>
-        <NavigationContainer>
+      <NavigationContainer>
+        <ThemeSelector>
           <App />
-        </NavigationContainer>
-      </ThemeSelector>
+        </ThemeSelector>
+      </NavigationContainer>
     </Compose>
   );
 };

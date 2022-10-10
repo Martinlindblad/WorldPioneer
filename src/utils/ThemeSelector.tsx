@@ -1,9 +1,16 @@
-import {ThemeProvider} from '@react-navigation/native';
-import React, {useMemo, useEffect, useState} from 'react';
+import React, {
+  useMemo,
+  useEffect,
+  useState,
+  Dispatch,
+  SetStateAction,
+} from 'react';
 
 import {useColorScheme} from 'react-native';
 import themes from 'src/theme';
+import {Colors} from 'src/theme/colors';
 
+export type ThemeOptions = 'light' | 'dark';
 type ThemeSelectorContext = {
   appThemes: Array<{
     displayName: string;
@@ -13,25 +20,33 @@ type ThemeSelectorContext = {
 export const Context = React.createContext<ThemeSelectorContext>({
   appThemes: [],
 });
-
+export interface ThemeContextInterface {
+  theme: {name: string; colors: Colors; dimensions: {baseSize: number}};
+  setTheme: Dispatch<SetStateAction<ThemeOptions>>;
+}
 const appThemes = [
-  {displayName: 'Light', name: 'ligtht'},
+  {displayName: 'Light', name: 'light'},
   {displayName: 'Dark', name: 'dark'},
 ];
+export const ThemeContext = React.createContext<ThemeContextInterface | null>(
+  null,
+);
 
-const systemColorScheme = useColorScheme();
-
-const ThemeSelector = ({
-  children,
-}: {
-  children?: React.ReactNode;
-}): JSX.Element => {
-  const [appColorTheme, setAppColorTheme] = useState<string>();
+const ThemeSelector: React.FC<{children: JSX.Element}> = ({children}) => {
+  // default theme to the system
+  const systemColorScheme = useColorScheme();
+  const [appColorTheme, setTheme] = useState<ThemeOptions>('dark');
   const {lightTheme, darkTheme} = themes;
 
   useEffect(() => {
-    setAppColorTheme('dark');
+    if (systemColorScheme) setTheme(systemColorScheme);
   }, []);
+  const contextValues = useMemo(
+    () => ({
+      appThemes,
+    }),
+    [],
+  );
 
   const theme = useMemo(() => {
     switch (appColorTheme) {
@@ -41,20 +56,15 @@ const ThemeSelector = ({
         return lightTheme;
 
       default:
-        return systemColorScheme;
+        return darkTheme;
     }
   }, []);
 
-  const contextValues = useMemo(
-    () => ({
-      appThemes,
-    }),
-    [],
-  );
-
   return (
     <Context.Provider value={contextValues}>
-      <ThemeProvider value={theme}>{children}</ThemeProvider>
+      <ThemeContext.Provider value={{theme, setTheme}}>
+        {children}
+      </ThemeContext.Provider>
     </Context.Provider>
   );
 };
