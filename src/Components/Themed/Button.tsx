@@ -17,10 +17,10 @@ const styles = StyleSheet.create({
 interface ButtonProps {
   title: string;
   onPress: () => void;
-  disabled?: boolean | undefined;
+  disabled?: boolean;
   style?: any;
   variant: 'l' | 'm' | 's';
-  otherProp: ViewStyle;
+  otherProp?: ViewStyle;
 }
 export const Button = ({props}: {props: ButtonProps}) => {
   const {variant, style, title, ...otherProps} = props;

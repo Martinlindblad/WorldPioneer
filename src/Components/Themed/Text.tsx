@@ -25,12 +25,14 @@ export const Text = ({
   variant = 's',
   props,
   children,
+  style,
 }: {
   variant: 'l' | 'm' | 's';
-  props: TextProps;
+  props?: TextProps;
+  style?: any;
   children?: React.ReactNode;
 }) => {
-  const {style, ...otherProps} = props;
+  const {...otherProps} = props;
 
   return (
     <DefaultText

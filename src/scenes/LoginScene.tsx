@@ -1,5 +1,6 @@
 import {firebase} from '@react-native-firebase/auth';
 import React, {useCallback} from 'react';
+import {useForm} from 'react-hook-form';
 import {
   SafeAreaView,
   View,
@@ -15,6 +16,12 @@ import {useFirebaseUserAuth} from '../contexts/Auth';
 const LoginScene = (): JSX.Element => {
   const {signInWithEmailAndPassword, initializing, currentUser} =
     useFirebaseUserAuth();
+
+  const {
+    handleSubmit,
+    watch,
+    formState: {errors},
+  } = useForm();
 
   const handleSignInButtonPressed = useCallback(() => {
     const email = 'martin.l@test.com';

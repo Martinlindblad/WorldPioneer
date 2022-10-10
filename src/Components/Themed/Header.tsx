@@ -25,12 +25,14 @@ export const Header = ({
   variant = 's',
   props,
   children,
+  style,
 }: {
   variant: 'l' | 'm' | 's';
-  props: TextProps;
-  children: React.ReactNode;
+  props?: TextProps;
+  style?: any;
+  children?: React.ReactNode;
 }) => {
-  const {style, ...otherProps} = props;
+  const {...otherProps} = props;
 
   return (
     <DefaultHeader
@@ -39,7 +41,6 @@ export const Header = ({
         style,
         styles.defaultHeader,
         styles[`defaultHeader.${variant}`],
-        ,
       ]}
       {...otherProps}>
       {children}
