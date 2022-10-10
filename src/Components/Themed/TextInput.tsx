@@ -42,23 +42,27 @@ export const TextInput = ({
   props,
   children,
   style,
+  ref,
+  disabled,
 }: {
   variant: 'l' | 'm' | 's';
   style?: any;
-  props: TextInputProps;
+  props?: TextInputProps;
   children?: React.ReactNode;
+  disabled: boolean | undefined;
+  ref?: React.LegacyRef<DefaultTextInput> | undefined;
 }) => {
   const {...otherProps} = props;
 
   return (
     <DefaultTextInput
+      ref={ref}
       placeholderTextColor={colors.primaryAlt}
       style={[
         {color: currentColorScheme.text},
         style,
         styles.defaultTextInput,
         styles[`defaultTextInput.${variant}`],
-        ,
       ]}
       {...otherProps}>
       {children}

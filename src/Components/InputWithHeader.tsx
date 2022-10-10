@@ -11,7 +11,7 @@ import colors from 'src/theme/colors';
 import {Header} from './Themed/Header';
 import {TextInput} from './Themed/TextInput';
 
-interface LabeledInputProps extends TextInputProps {
+export interface LabeledInputProps extends TextInputProps {
   handleTextChange: (arg0: string) => void;
   onBlur?:
     | ((e: NativeSyntheticEvent<TextInputFocusEventData>) => void)
@@ -26,7 +26,6 @@ interface LabeledInputProps extends TextInputProps {
   isMissingInRequiredFields?: boolean;
   secureTextEntry?: boolean;
   locked?: boolean;
-  inputRef?: React.MutableRefObject<TextInputProps | null>;
   type?: 'column' | 'row';
 }
 
@@ -46,7 +45,6 @@ const InputWithHeader = ({
   secureTextEntry,
   multiline,
   type = 'column',
-  inputRef,
   ...rest
 }: LabeledInputProps): JSX.Element => {
   return (
@@ -61,24 +59,13 @@ const InputWithHeader = ({
         {title}
       </Header>
       <TextInput
+        variant={'l'}
         disabled={disabled || locked}
-        onBlur={onBlur}
-        status={isMissingInRequiredFields ? 'danger' : 'basic'}
-        value={value}
         placeholder={customPlaceholder || 'Skriv...'}
         placeholderTextColor={colors.border}
-        accessoryRight={accessoryRight}
-        multiline={multiline}
         textAlignVertical={'top'}
         onChangeText={(nextValue: string) => handleTextChange(nextValue)}
-        textStyle={{
-          color: colors.primaryLabel,
-          minHeight: multiline ? 132 : 0,
-          paddingTop: Platform.OS === 'android' ? 8 : 0,
-        }}
-        secureTextEntry={secureTextEntry}
         {...rest}
-        ref={inputRef}
         style={{
           minHeight: 45,
           borderRadius: 16,
