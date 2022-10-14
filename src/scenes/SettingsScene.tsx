@@ -10,9 +10,9 @@ import {
   Button,
   ActivityIndicator,
 } from 'react-native';
-import {useFirebaseUserAuth} from '../contexts/Auth';
+import {useFirebaseUserAuth} from 'src/contexts/Auth';
 
-const LoginScene = (): JSX.Element => {
+const SettingsScene = (): JSX.Element => {
   const {signOut, initializing, currentUser} = useFirebaseUserAuth();
 
   const handleSignOutPressed = useCallback(() => {
@@ -52,7 +52,7 @@ const LoginScene = (): JSX.Element => {
   );
 };
 
-export default LoginScene;
+export default SettingsScene;
 
 const styles = StyleSheet.create({
   content: {

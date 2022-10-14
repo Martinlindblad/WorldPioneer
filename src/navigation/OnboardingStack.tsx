@@ -1,7 +1,6 @@
 import React from 'react';
 import {createStackNavigator} from '@react-navigation/stack';
-
-import OnboardingScene from '../scenes/OnboardingScene';
+import OnboardingScene from 'src/scenes/OnboardingScene';
 
 // import { useSafeAreaInsets } from 'react-native-safe-area-context';
 

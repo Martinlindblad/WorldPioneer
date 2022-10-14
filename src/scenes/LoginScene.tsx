@@ -10,7 +10,7 @@ import {
   Button,
   ActivityIndicator,
 } from 'react-native';
-import {useFirebaseUserAuth} from '../contexts/Auth';
+import { useFirebaseUserAuth } from 'src/contexts/Auth';
 
 const LoginScene = (): JSX.Element => {
   const {signInWithEmailAndPassword, initializing, currentUser} =

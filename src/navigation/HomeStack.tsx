@@ -1,7 +1,7 @@
 import React from 'react';
 import {createStackNavigator} from '@react-navigation/stack';
-import HomeScene from '../scenes/HomeScene/HomeScene';
 import SettingsScene from 'src/scenes/SettingsScene';
+import HomeScene from 'src/scenes/HomeScene/HomeScene';
 
 // import { useSafeAreaInsets } from 'react-native-safe-area-context';
 

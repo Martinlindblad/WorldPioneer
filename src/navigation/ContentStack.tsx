@@ -2,9 +2,9 @@ import React from 'react';
 
 // import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import BottomTab from './BottomTab';
-import LocationListScene from '../scenes/LocationListScene';
 
 import {createStackNavigator} from '@react-navigation/stack';
+import LocationListScene from 'src/scenes/LocationListScene';
 
 const Stack = createStackNavigator();
 

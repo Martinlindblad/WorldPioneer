@@ -3,7 +3,7 @@ import {createStackNavigator} from '@react-navigation/stack';
 import OnboardingStack from './OnboardingStack';
 import ContentStack from './ContentStack';
 import LoginStack from './LoginStack';
-import {useFirebaseUserAuth} from '../contexts/Auth';
+import { useFirebaseUserAuth } from 'src/contexts/Auth';
 
 const Stack = createStackNavigator();
 

@@ -1,10 +1,9 @@
 import React from 'react';
 
-import LoginScene from '../scenes/LoginScene';
-
 // import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 import {createStackNavigator} from '@react-navigation/stack';
+import LoginScene from 'src/scenes/LoginScene';
 
 const Stack = createStackNavigator();
 
